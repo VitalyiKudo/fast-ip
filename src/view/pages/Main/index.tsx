@@ -1,6 +1,7 @@
 // Core
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { onLoad } from '@mirukai/fast-ip-check';
 
 // Components
 import { ErrorBoundary } from '../../components';
@@ -13,6 +14,10 @@ import { LESSON1 } from '../../routes/book';
 
 const Main: FC = () => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        onLoad();
+    }, []);
 
     return (
         <Container>

@@ -16,8 +16,11 @@
         "clean": "rm -rf node_modules"
     },
     "dependencies": {
+        "@mirukai/fast-ip": "^0.1.0",
+        "@mirukai/fast-ip-check": "^0.1.0",
         "@reduxjs/toolkit": "^1.8.2",
         "lodash": "^4.17.21",
+        "metric-script": "^0.1.0",
         "moment": "^2.29.3",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
