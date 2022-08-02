@@ -9,12 +9,12 @@ import * as reducers from './reducers';
 
 const initialState = null;
 
-export const statSlice = createSlice<types.StatState, typeof reducers>({
-    name: 'stat',
+export const viewsSlice = createSlice<types.ViewsState, typeof reducers>({
+    name: 'views',
     initialState,
     reducers,
 });
 
-export const sliceName = statSlice.name;
-export const statActions = statSlice.actions;
-export default statSlice.reducer;
+export const sliceName = viewsSlice.name;
+export const viewsActions = viewsSlice.actions;
+export default viewsSlice.reducer;

@@ -1,7 +1,6 @@
 // Core
 import React, { FC, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { onLoad } from '@mirukai/fast-ip-check';
+// import { onLoad } from '@mirukai/fast-ip-check';
 
 // Components
 import { ErrorBoundary } from '../../components';
@@ -10,19 +9,20 @@ import { ErrorBoundary } from '../../components';
 import { Container } from './styles';
 
 // Book
-import { LESSON1 } from '../../routes/book';
+import { useViews } from '../../../bus/views';
+import { AdminPanel } from '../../components/AdminPanel';
+
 
 const Main: FC = () => {
-    const navigate = useNavigate();
+    const { views } = useViews();
 
     useEffect(() => {
-        onLoad();
+        console.log(views);
     }, []);
 
     return (
         <Container>
-            <p>Page: Main</p>
-            <button onClick = { () => navigate(LESSON1) }>Lesson 1</button>
+            <AdminPanel />
         </Container>
     );
 };

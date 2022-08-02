@@ -3,22 +3,21 @@ import { SagaIterator } from '@redux-saga/core';
 import { createAction } from '@reduxjs/toolkit';
 import { put, takeLatest } from 'redux-saga/effects';
 
-
 // Slice
-import { statActions, sliceName } from '../slice';
+import { viewsActions, sliceName } from '../slice';
 
 // Tools
 import { makeRequest } from '../../../tools/utils';
 import { API_URL } from '../../../init/constants';
 
 // Action
-export const fetchStatAction = createAction<number>(`${sliceName}/FETCH_MESSAGES_ASYNC`);
+export const fetchViewsAction = createAction<number>(`${sliceName}/FETCH_MESSAGES_ASYNC`);
 
 // Types
-import { Stat } from '../types';
+import { Views } from '../types';
 
 // Saga
-const fetchStat = (callAction: ReturnType<typeof fetchStatAction>) => makeRequest<Stat>({
+const fetchViews = (callAction: ReturnType<typeof fetchViewsAction>) => makeRequest<Views>({
     callAction,
     fetchOptions: {
         successStatusCode: 200,
@@ -31,11 +30,11 @@ const fetchStat = (callAction: ReturnType<typeof fetchStatAction>) => makeReques
     },
     succes: function* (result) {
         yield console.log(result);
-        yield put(statActions.setStat(result));
+        yield put(viewsActions.setViews(result));
     },
 });
 
 // Watcher
-export function* watchFetchStat(): SagaIterator {
-    yield takeLatest(fetchStatAction.type, fetchStat);
+export function* watchFetchViews(): SagaIterator {
+    yield takeLatest(fetchViewsAction.type, fetchViews);
 }
