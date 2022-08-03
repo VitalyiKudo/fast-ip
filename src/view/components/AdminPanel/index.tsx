@@ -2,6 +2,7 @@
 import moment from 'moment';
 import React, { FC, useEffect, useState } from 'react';
 import { useHanlderViews } from '../../../tools/hooks/useHandlerViews';
+import FlagImage from '../../elements/FlagImage';
 
 // Bus
 // import {} from '../../../bus/'
@@ -46,21 +47,24 @@ export const AdminPanel: FC<PropTypes> = () => {
     return (
         <S.Container>
             <main>
-                <div style = {{ display: 'flex' }}>
-                    <button onClick = { reduceDate }>-</button>
+                <div className = 'date'>
+                    <button onClick = { reduceDate }>←</button>
                     <h1>{date}</h1>
-                    <button onClick = { increaseDate }>+</button>
+                    <button onClick = { increaseDate }>→</button>
                 </div>
-                <p>Total views: {viewsArray?.length}</p>
-                <p>Views by countries</p>
-                {countriesArray.map((stat: any, index: any) => {
-                    return (
-                        <div key = { index }>
-                            <p>Country: {stat.country}</p>
-                            <p>Views: {stat.amount}</p>
-                        </div>
-                    );
-                })}
+                <p className = 'views-info'>Total visitors:<span> {viewsArray?.length}</span></p>
+                <h1 className = 'country-heading'>Current visitors locations</h1>
+                <div className = 'country-info'>
+                    {countriesArray.map((stat: any, index: any) => {
+                        return (
+                            <div
+                                className = 'country-container'
+                                key = { index }>
+                                <h2><FlagImage index = { stat.country }/><p>{stat.amount}</p></h2>
+                            </div>
+                        );
+                    })}
+                </div>
             </main>
         </S.Container>
     );
