@@ -26,6 +26,7 @@ export const AdminPanel: FC<PropTypes> = () => {
         setDate(moment().subtract(array[ 0 ], 'day')
             .add(array[ 1 ], 'day')
             .format('DD/MM/YYYY'));
+        // console.log(viewsArray);
     }, [ array ]);
 
     const reduceDate = () => {

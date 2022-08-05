@@ -1,5 +1,7 @@
 // Core
 import React, { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTogglersRedux } from '../../../bus/client/togglers';
 import { useUser } from '../../../bus/user';
 
 // Bus
@@ -14,16 +16,22 @@ type PropTypes = {
 }
 
 export const SignUp: FC<PropTypes> = () => {
-    const [ userName, setUserName ] = useState('');
     const { createUser } = useUser();
+    const { setTogglerAction } = useTogglersRedux();
+    const navigate = useNavigate();
+    const [ userName, setUserName ] = useState('');
     const [ password, setPassword ] = useState('');
+
+    const key = '4h4ui513h4u23o';
 
     const submit = (name: string) => {
         createUser({
             userName: name,
             password: password,
-            key:      'fewfjpiowe341242',
+            key:      key,
         });
+        setTogglerAction({ type: 'isLoggedIn', value: true });
+        navigate('/info');
     };
 
     return (

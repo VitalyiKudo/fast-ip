@@ -28,6 +28,7 @@ const createUser = (callAction: ReturnType<typeof createUserAction>) => makeRequ
             },
             body: JSON.stringify({
                 userName: callAction.payload.userName,
+                password: callAction.payload.password,
                 key:      callAction.payload.key,
             }),
         }),
@@ -35,6 +36,7 @@ const createUser = (callAction: ReturnType<typeof createUserAction>) => makeRequ
     succes: function* (result) {
         yield console.log(result);
         yield put(userActions.setUser(result));
+        yield localStorage.setItem('userKey', result.key);
     },
 });
 

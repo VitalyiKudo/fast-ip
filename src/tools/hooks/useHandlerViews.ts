@@ -20,7 +20,7 @@ export const useHanlderViews = (date: string) => {
         countryArray.map((arr: any) => {
             return countryObject.push({
                 country: arr[ 0 ],
-                amount:  arr.length,
+                amount:  arr.length - 1,
             });
         });
 
