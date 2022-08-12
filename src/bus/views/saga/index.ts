@@ -10,7 +10,7 @@ export const useViewsSaga = () => {
     const dispatch = useDispatch();
 
     return {
-        fetchViews: () => void dispatch(fetchViewsAction(1)),
+        fetchViews: (key: string | undefined) => void dispatch(fetchViewsAction(key)),
     };
 };
 

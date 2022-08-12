@@ -10,15 +10,21 @@ import { useUserSaga } from './saga';
 // import { useUserSaga } from './saga';
 
 export const useUser = () => {
-    const { createUser } = useUserSaga();
+    const { createUser, authUser, fetchUser, logoutUser, refreshUser } = useUserSaga();
     const user = useSelector((state) => state.user); // Add user to ./src/init/redux/index.ts
 
     useEffect(() => {
-        // fetchUser();
-    }, []);
+        if (user?.error) {
+            refreshUser();
+        }
+    }, [ user?.error ]);
 
     return {
+        logoutUser,
+        refreshUser,
+        fetchUser,
         createUser,
+        authUser,
         user,
     };
 };

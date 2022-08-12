@@ -1,6 +1,8 @@
 // Core
 import moment from 'moment';
 import React, { FC, useEffect, useState } from 'react';
+import { useTogglersRedux } from '../../../bus/client/togglers';
+import { useUser } from '../../../bus/user';
 import { useHanlderViews } from '../../../tools/hooks/useHandlerViews';
 import FlagImage from '../../elements/FlagImage';
 
@@ -16,17 +18,23 @@ type PropTypes = {
 }
 
 export const AdminPanel: FC<PropTypes> = () => {
+    const { logoutUser, user } = useUser();
+    const { setTogglerAction } = useTogglersRedux();
     const [ array, setArray ] = useState([ 0, 0 ]);
     const [ date, setDate ] = useState(moment()
         .format('DD/MM/YYYY'));
 
     const { viewsArray, countriesArray } = useHanlderViews(date);
 
+    const logout = (username: any) => {
+        logoutUser(username);
+        setTogglerAction({ type: 'isLoggedIn', value: false });
+    };
+
     useEffect(() => {
         setDate(moment().subtract(array[ 0 ], 'day')
             .add(array[ 1 ], 'day')
             .format('DD/MM/YYYY'));
-        // console.log(viewsArray);
     }, [ array ]);
 
     const reduceDate = () => {
@@ -53,6 +61,7 @@ export const AdminPanel: FC<PropTypes> = () => {
                     <h1>{date}</h1>
                     <button onClick = { increaseDate }>→</button>
                 </div>
+                <button onClick = { () => logout(user?.username) }>Logout</button>
                 <p className = 'views-info'>Total visitors:<span> {viewsArray?.length}</span></p>
                 <h1 className = 'country-heading'>Current visitors locations</h1>
                 <div className = 'country-info'>

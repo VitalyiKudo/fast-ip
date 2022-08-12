@@ -1,6 +1,6 @@
 // Core
 import React, { FC } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { KeyInfo } from '../components/SignUp/KeyInfo';
 
 // Pages
@@ -18,7 +18,16 @@ export const Private: FC = () => {
             />
             <Route
                 element = { <KeyInfo /> }
-                path = '/info'
+                path = { book.INFO }
+            />
+            <Route
+                element = {
+                    <Navigate
+                        replace
+                        to = { book.ROOT }
+                    />
+                }
+                path = '*'
             />
         </Routes>
     );

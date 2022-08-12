@@ -7,7 +7,11 @@ import * as types from './types';
 // Reducers
 import * as reducers from './reducers';
 
-const initialState = null;
+const initialState = {
+    username: '',
+    key:      '',
+    error:    null,
+};
 
 export const userSlice = createSlice<types.UserState, typeof reducers>({
     name: 'user',

@@ -11,7 +11,7 @@ import { makeRequest } from '../../../tools/utils';
 import { API_URL } from '../../../init/constants';
 
 // Action
-export const fetchViewsAction = createAction<number>(`${sliceName}/FETCH_VIEWS_ASYNC`);
+export const fetchViewsAction = createAction<string | undefined>(`${sliceName}/FETCH_VIEWS_ASYNC`);
 
 // Types
 import { Views } from '../types';
@@ -21,7 +21,7 @@ const fetchViews = (callAction: ReturnType<typeof fetchViewsAction>) => makeRequ
     callAction,
     fetchOptions: {
         successStatusCode: 200,
-        fetch:             () => fetch(`${API_URL}/users/${localStorage.getItem('userKey')}/views`, {
+        fetch:             () => fetch(`${API_URL}/users/${callAction.payload}/views`, {
             method:  'GET',
             headers: {
                 'Content-Type': 'application/json',

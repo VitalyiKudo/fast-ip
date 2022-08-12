@@ -1,11 +1,11 @@
 // Core
 import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { nanoid } from 'nanoid';
-
-// Bus
 import { useTogglersRedux } from '../../../bus/client/togglers';
 import { useUser } from '../../../bus/user';
+
+// Bus
+// import {} from '../../../bus/'
 
 // Styles
 import * as S from './styles';
@@ -15,48 +15,46 @@ type PropTypes = {
     /* type props here */
 }
 
-export const SignUp: FC<PropTypes> = () => {
-    const { createUser } = useUser();
+export const SingIn: FC<PropTypes> = () => {
+    const { authUser } = useUser();
     const { setTogglerAction } = useTogglersRedux();
     const navigate = useNavigate();
-    const [ userName, setUserName ] = useState('');
+    const [ username, setUserName ] = useState('');
     const [ password, setPassword ] = useState('');
 
-    const key = nanoid();
-
-    const submit = (name: string) => {
-        createUser({
-            username: name,
-            password: password,
-            key:      key,
+    const submit = (username: string, password: string) => {
+        authUser({
+            username,
+            password,
         });
         setTogglerAction({ type: 'isLoggedIn', value: true });
-        navigate('/info');
+
+        return navigate('/');
     };
 
     return (
         <S.Container>
             <main>
-                <h1>Create an account</h1>
+                <h1>Sing in to your account</h1>
                 <div className = 'input-section'>
                     <input
                         className = 'name'
                         placeholder = 'name'
                         type = 'text'
-                        value = { userName }
+                        value = { username }
                         onChange = { (event) => setUserName(event.target.value) }
                     />
                     <input
                         className = 'password'
                         placeholder = 'password'
                         type = 'password'
+                        value = { password }
                         onChange = { (event) => setPassword(event.target.value) }
                     />
                     <button
                         className = 'submit'
-                        onClick = { () => submit(userName) }>Sumbit
+                        onClick = { () => submit(username, password) }>Sumbit
                     </button>
-                    <button onClick = { () => navigate('/login') }>SignIn</button>
                 </div>
             </main>
         </S.Container>

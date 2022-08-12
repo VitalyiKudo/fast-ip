@@ -1,3 +1,4 @@
+/* eslint-disable max-statements-per-line */
 // Core
 import { SagaIterator } from '@redux-saga/core';
 import { createAction } from '@reduxjs/toolkit';
@@ -11,26 +12,35 @@ import { makeRequest } from '../../../tools/utils';
 import { API_URL } from '../../../init/constants';
 
 // Action
-export const fetchUserAction = createAction<number>(`${sliceName}/FETCH_MESSAGES_ASYNC`);
+export const fetchUserAction = createAction<any>(`${sliceName}/FETCH_USER_ASYNC`);
 
 // Types
 import { User } from '../types';
+import { getCookie } from '../../../tools/utils/cookieHandler';
 
 // Saga
 const fetchUser = (callAction: ReturnType<typeof fetchUserAction>) => makeRequest<User>({
     callAction,
     fetchOptions: {
         successStatusCode: 200,
-        fetch:             () => fetch(`${API_URL}/users`, {
+        fetch:             () => fetch(`${API_URL}/users/profile`, {
             method:  'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: new Headers({
+                Authorization: `Bearer ${getCookie('access_token')}`,
+            }),
         }),
     },
     succes: function* (result) {
-        yield console.log(result);
+        yield console.log({
+            cookie: getCookie('access_token'),
+            result: result,
+        });
         yield put(userActions.setUser(result));
+    },
+    error: function* () {
+        yield put(userActions.setUser({
+            error: 'fetchError',
+        }));
     },
 });
 

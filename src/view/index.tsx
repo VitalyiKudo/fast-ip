@@ -24,6 +24,7 @@ export const App: FC = () => {
     const { setTogglerAction } = useTogglersRedux();
     const [ isDefaultTheme ] = useLocalStorage('isDefaultTheme', true);
 
+
     const setOnlineStatusHanlder = useCallback(() => void setTogglerAction({
         type:  'isOnline',
         value: navigator.onLine,
