@@ -23,6 +23,9 @@ export const SingIn: FC<PropTypes> = () => {
     const [ password, setPassword ] = useState('');
 
     const submit = (username: string, password: string) => {
+        if (username === '' || password === '') {
+            return null;
+        }
         authUser({
             username,
             password,

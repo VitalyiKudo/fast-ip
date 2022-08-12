@@ -24,14 +24,18 @@ export const SignUp: FC<PropTypes> = () => {
 
     const key = nanoid();
 
-    const submit = (name: string) => {
+    const submit = () => {
+        if (userName === '' || password === '') {
+            return null;
+        }
         createUser({
-            username: name,
+            username: userName,
             password: password,
             key:      key,
         });
         setTogglerAction({ type: 'isLoggedIn', value: true });
-        navigate('/info');
+
+        return navigate('/info');
     };
 
     return (
@@ -55,7 +59,7 @@ export const SignUp: FC<PropTypes> = () => {
                 </div>
                 <button
                     className = 'submit'
-                    onClick = { () => submit(userName) }>Sumbit
+                    onClick = { () => submit() }>Sumbit
                 </button>
                 <button onClick = { () => navigate('/login') }>SignIn</button>
             </main>

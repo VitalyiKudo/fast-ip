@@ -21,6 +21,7 @@ main {
         margin: 20px auto;
     }
     h1 {
+        color: #FF4A4A;
         margin-top: 1%;
         font-size: 22px;
     }
@@ -36,7 +37,11 @@ main {
         width: 308px;
         margin-top: 5px;
         height: 20px;
-
+        &:hover {
+            background-color: #FF4A4A;
+            color: white;
+            transition: 0.1.7s;
+        }
     }
 }
 `;

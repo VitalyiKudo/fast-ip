@@ -61,7 +61,10 @@ export const AdminPanel: FC<PropTypes> = () => {
                     <h1>{date}</h1>
                     <button onClick = { increaseDate }>→</button>
                 </div>
-                <button onClick = { () => logout(user?.username) }>Logout</button>
+                <button
+                    className = 'logout'
+                    onClick = { () => logout(user?.username) }>Logout
+                </button>
                 <p className = 'views-info'>Total visitors:<span> {viewsArray?.length}</span></p>
                 <h1 className = 'country-heading'>Current visitors locations</h1>
                 <div className = 'country-info'>

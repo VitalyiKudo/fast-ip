@@ -8,7 +8,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 main {
-    padding-top: 10%;
+    padding-top: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,10 +18,11 @@ main {
     background: #282828;
     min-height: 300px;
     .input-section {
-        margin: 20px auto;
+        margin: 10px auto;
     }
     h1 {
-        margin-top: 1%;
+        color: #FF4A4A;
+        margin-top: 5%;
         font-size: 20px;
         text-align: center;
     }
@@ -37,7 +38,11 @@ main {
         width: 308px;
         margin-top: 5px;
         height: 20px;
-
+        &:hover {
+            background-color: #FF4A4A;
+            color: white;
+            transition: 0.1.7s;
+        }
     }
 }
 `;

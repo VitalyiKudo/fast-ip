@@ -7,9 +7,13 @@ font-size: 20px;
 display: flex;
 margin-top: 20%;
 justify-content: center;
-button {
-    background: none;
-    border: none;
+.logout {
+    margin: 0px auto;
+    display: block;
+    background-color: transparent;
+    border: 1px solid #FF4A4A;
+    color: white;
+    padding: 5px 10px;
 }
 main {
     background: #282828;
@@ -26,6 +30,8 @@ main {
         button {
             font-size: 30px;
             color: #FF4A4A;
+                background: none;
+    border: none;
         }
     }
     .views-info {
