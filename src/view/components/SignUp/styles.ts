@@ -8,7 +8,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 main {
-    padding-top: 10%;
+    padding-top: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
