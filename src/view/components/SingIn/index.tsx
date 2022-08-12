@@ -51,10 +51,14 @@ export const SingIn: FC<PropTypes> = () => {
                         value = { password }
                         onChange = { (event) => setPassword(event.target.value) }
                     />
+                </div>
+                <div className = 'button-section'>
                     <button
                         className = 'submit'
-                        onClick = { () => submit(username, password) }>Sumbit
+                        onClick = { () => submit(username, password) }>Submit
                     </button>
+                    <h1>Don't have an account yet?</h1>
+                    <button onClick = { () => navigate('/register') }>Registration</button>
                 </div>
             </main>
         </S.Container>

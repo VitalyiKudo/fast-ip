@@ -52,12 +52,12 @@ export const SignUp: FC<PropTypes> = () => {
                         type = 'password'
                         onChange = { (event) => setPassword(event.target.value) }
                     />
-                    <button
-                        className = 'submit'
-                        onClick = { () => submit(userName) }>Sumbit
-                    </button>
-                    <button onClick = { () => navigate('/login') }>SignIn</button>
                 </div>
+                <button
+                    className = 'submit'
+                    onClick = { () => submit(userName) }>Sumbit
+                </button>
+                <button onClick = { () => navigate('/login') }>SignIn</button>
             </main>
         </S.Container>
     );

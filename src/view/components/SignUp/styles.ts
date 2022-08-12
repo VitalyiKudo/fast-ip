@@ -17,12 +17,26 @@ main {
     border-radius: 15px;
     background: #282828;
     min-height: 300px;
+    .input-section {
+        margin: 20px auto;
+    }
     h1 {
         margin-top: 1%;
+        font-size: 22px;
     }
     input {
-        margin-top: 10px;
+        margin-top: 2px;
+        width: 300px;
+        height: 37px;
+        font-size: 20px;
         display: block;
+    }
+    button {
+        display: block;
+        width: 308px;
+        margin-top: 5px;
+        height: 20px;
+
     }
 }
 `;

@@ -8,7 +8,6 @@ import { Private } from './Private';
 // Bus
 import { useTogglersRedux } from '../../bus/client/togglers';
 import { useUser } from '../../bus/user';
-import { clearCookie, getCookie } from '../../tools/utils/cookieHandler';
 
 export const Routes: FC = () => {
     const { togglersRedux: { isLoggedIn }, setTogglerAction } = useTogglersRedux();

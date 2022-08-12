@@ -1,7 +1,6 @@
 // Core
 import React, { FC } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { SingIn } from '../components/SingIn';
 
 // Pages
 import * as Pages from '../pages';
@@ -17,14 +16,14 @@ export const Public: FC = () => {
                 path = { book.REGISTER }
             />
             <Route
-                element = { <SingIn /> }
+                element = { <Pages.Login /> }
                 path = { book.LOGIN }
             />
             <Route
                 element = {
                     <Navigate
                         replace
-                        to = { book.REGISTER }
+                        to = { book.LOGIN }
                     />
                 }
                 path = '*'
