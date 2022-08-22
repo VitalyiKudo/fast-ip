@@ -29,7 +29,6 @@ const fetch__entityName__(pascalCase) = (callAction: ReturnType<typeof fetch__en
         }),
     },
     succes: function* (result) {
-        yield console.log(result);
         yield put(__entityName__Actions.set__entityName__(pascalCase)(result));
     },
 });

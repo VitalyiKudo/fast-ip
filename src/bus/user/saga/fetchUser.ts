@@ -31,10 +31,6 @@ const fetchUser = (callAction: ReturnType<typeof fetchUserAction>) => makeReques
         }),
     },
     succes: function* (result) {
-        yield console.log({
-            cookie: getCookie('access_token'),
-            result: result,
-        });
         yield put(userActions.setUser(result));
     },
     error: function* () {

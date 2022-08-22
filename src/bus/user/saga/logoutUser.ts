@@ -31,11 +31,11 @@ const logoutUser = (callAction: ReturnType<typeof logoutUserAction>) => makeRequ
             }),
         }),
     },
-    succes: function* () {
-        yield clearCookie();
-    },
     error: function* (errorData) {
         yield console.log(errorData);
+    },
+    finallyEnd: function*() {
+        yield clearCookie();
     },
 });
 

@@ -16,6 +16,12 @@ justify-content: center;
     padding: 5px 10px;
 }
 main {
+    button {
+        font-size: 30px;
+        color: #FF4A4A;
+        background: none;
+        border: none;
+    }
     background: #282828;
     border: 1px solid black;
     border-radius: 15px;
@@ -27,12 +33,6 @@ main {
         margin-top: 2%;
         display: flex;
         justify-content: center;
-        button {
-            font-size: 30px;
-            color: #FF4A4A;
-                background: none;
-    border: none;
-        }
     }
     .views-info {
         font-size: 22px;
@@ -43,9 +43,9 @@ main {
         }
     }
     .country-heading {
+        font-size: 22px;
         text-align: center;
         margin-bottom: 15px;
-        color: #adadb8;
     }
     .country-info {
         display: flex;
@@ -70,6 +70,10 @@ main {
         div {
             margin: 1%;
         }
+    }
+    .button-section {
+        display: flex;
+        justify-content: center;
     }
 }
 `;

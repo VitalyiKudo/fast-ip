@@ -14,7 +14,6 @@ export const Routes: FC = () => {
     const { fetchUser } = useUser();
 
     useEffect(() => {
-        console.log(document.cookie);
         if (document.cookie !== '') {
             setTogglerAction({ type: 'isLoggedIn', value: true });
             fetchUser();

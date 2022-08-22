@@ -1,12 +1,15 @@
 /* eslint-disable array-callback-return */
 import { useViews } from '../../bus/views';
 
-export const useHanlderViews = (date: string) => {
+export const useHanlderViews = () => {
     const { views } = useViews();
 
-    const viewsArray = views?.filter((view) => view.createdAt === date);
+    const viewsArray = (date: string) => {
+        return views?.filter((view) => view.createdAt.includes(date));
+    };
 
-    const getCountries = () => {
+    const getCountries = (date?: string) => {
+        const viewsArray = date ? views?.filter((view) => view.createdAt.includes(date)) : views;
         const countryArray: any = [];
         const countryObject : any = [];
         viewsArray?.map((view) => {
@@ -27,10 +30,8 @@ export const useHanlderViews = (date: string) => {
         return countryObject;
     };
 
-    const countriesArray = getCountries();
-
     return {
-        countriesArray,
+        getCountries,
         viewsArray,
     };
 };
